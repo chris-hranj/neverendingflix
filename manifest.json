@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+
+ "name": "Neverendingflix",   "description": "This extension makes Netflix play forever.",   "version": "1.0",
+
+"permissions": [
+  "declarativeContent",
+  "input"
+  ],
+
+  "input_components":[
+    {
+      "name":"Test IME",
+      "type":"ime",
+      "id":"test",
+      "description":"Test IME",
+      "language":"en-US",
+      "layouts":["us::eng"]
+    }
+  ],
+
+ "page_action": {
+      "default_icon": {                   
+        "19": "icon1.png"
+      },
+      "default_title": "",     
+      "default_popup": "popup.html" //THIS NEEDS TO BE MADE
+    },
+
+  "background":{
+    "scripts":["background.js"]
+  },
+
+ "content_scripts": [
+  {
+    "matches": ["http://www.netflix.com/WiPlayer?movieid*"],
+    "js": ["jquery-1.11.1.js","contentscript.js"]
+  }
+ ]
+}
